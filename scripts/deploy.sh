@@ -45,7 +45,7 @@ git add .
 git commit -m "Deploy to $deploy_branch"
 
 # Push the changes to the remote repository
-git push origin $deploy_branch
+git push origin -f $deploy_branch
 
 # Switch back to the original branch
 git checkout $current_branch
