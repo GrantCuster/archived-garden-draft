@@ -7,9 +7,9 @@ git add .
 echo "Files have been added to the staging area."
 
 # Commit the changes with the provided message
-echo "Committing changes..."
-read -p "Enter your commit message:" commit_message
+read -p "Enter your commit message: " commit_message
 git commit -m "$commit_message"
+echo "Committing changes..."
 
 # Push the changes to the origin main branch
 echo "Pushing changes to origin main..."
