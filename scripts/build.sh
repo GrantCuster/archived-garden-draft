@@ -16,6 +16,9 @@ index_file="index.html"
 # Create the output directory if it doesn't exist
 mkdir -p "$output_dir"
 
+# Clear the output directory
+rm -rf "$output_dir"/*
+
 # Copy over the index.css
 cp "$src_dir/$css_file" "$output_dir/index.css"
 
