@@ -6,6 +6,8 @@ set -e
 # Directory containing the files to deploy
 output_dir="output"
 
+echo "garden.grantcuster.com" > $output_dir/CNAME
+
 # Branch to deploy to
 deploy_branch="gh-pages"
 
@@ -45,7 +47,7 @@ git add .
 git commit -m "Deploy to $deploy_branch"
 
 # Push the changes to the remote repository
-git push origin -f $deploy_branch
+git push origin $deploy_branch
 
 # Switch back to the original branch
 git checkout $current_branch
