@@ -5,7 +5,7 @@
 declare -A options
 options=(
     ["dev"]="bash scripts/dev.sh"
-    ["new post"]="bash scripts/new_post.sh"
+    ["new_post"]="bash scripts/new_post.sh"
     ["build"]="bash scripts/build.sh"
     ["commit"]="bash scripts/commit.sh"
     ["deploy"]="bash scripts/deploy.sh"
@@ -15,7 +15,7 @@ options=(
 # Define the list of labels
 labels=(
     "dev"
-    "new post"
+    "new_post"
     "build"
     "commit"
     "deploy"
