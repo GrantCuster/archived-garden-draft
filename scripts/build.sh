@@ -35,7 +35,7 @@ for file in "$src_dir/$input_dir"/*.md; do
     # Get the base filename without the extension
     base_filename=$(basename "$file" .md)
     # Extract the date and title part from the filename
-    date_part=$(echo "$base_filename" | grep -oP '^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}')
+    date_part=$(echo "$base_filename" | sed -E 's/^([0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}).*/\1/')
     title_part=$(echo "$base_filename" | sed 's/^[0-9-]*//')
     formatted_date=$(echo "$date_part" | sed 's/-/ /g' | awk '{print $1 "-" $2 "-" $3}')
     unslugified_title=$(unslugify "$title_part")
@@ -64,7 +64,7 @@ for file in "$src_dir/$input_dir"/*.md; do
     # Get the base filename without the extension
     base_filename=$(basename "$file" .md)
     # Extract the date from the filename
-    date_part=$(echo "$base_filename" | grep -oP '^\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}')
+    date_part=$(echo "$base_filename" | sed -E 's/^([0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}).*/\1/')
     formatted_date=$(echo "$date_part" | sed 's/-/ /g' | awk '{print $1 "-" $2 "-" $3 " " $4 ":" $5}')
     head_title=$(head -n 1 "$file" | sed 's/^# //')
     head_description=$(head -n 3 "$file" | tail -n 1)
