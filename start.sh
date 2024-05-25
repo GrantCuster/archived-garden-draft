@@ -7,6 +7,8 @@ options=(
     ["dev"]="bash scripts/dev.sh"
     ["new post"]="bash scripts/new_post.sh"
     ["build"]="bash scripts/build.sh"
+    ["commit"]="bash scripts/commit.sh"
+    ["deploy"]="bash scripts/deploy.sh"
     ["edit"]="nvim ."
 )
 
@@ -15,6 +17,8 @@ labels=(
     "dev"
     "new post"
     "build"
+    "commit"
+    "deploy"
     "edit"
     "exit"
 )
