@@ -44,7 +44,7 @@ for file in $(ls "$input_dir"/*.md | sort -r); do
     unslugified_title=$(unslugify "$title_part")
 
     # Add a list item to the index content
-    link_content+="<div><a href=\"$base_filename.html\">$formatted_date - $unslugified_title</a></div>"
+    link_content+="<div><a href=\"$base_filename/\">$formatted_date - $unslugified_title</a></div>"
 done
 
 # Prepare and save the index file content
@@ -72,9 +72,7 @@ for file in "$input_dir"/*.md; do
     head_title=$(head -n 1 "$file" | sed 's/^# //')
     head_description=$(head -n 3 "$file" | tail -n 1)
 
-    # Set the output filename with the .html extension
-    output_file="$output_dir/$base_filename.html"
-    # Convert the markdown file to HTML using pandoc
+   # Convert the markdown file to HTML using pandoc
     generated_html_content=$(pandoc "$file" --from=markdown-smart)
     date_paragraph="<p>$formatted_date</p>"
     html_content="$post_header_content$date_paragraph$generated_html_content"
@@ -85,6 +83,11 @@ for file in "$input_dir"/*.md; do
     head_replaced="${template_content/\{head\}/$head_template}"
     final_content="${head_replaced/\{content\}/$html_content}"
     formatted_post=$(echo "$final_content" | prettier --parser html)
+
+    mkdir -p "$output_dir/$base_filename"
+    # Set the output filename with the .html extension
+    output_file="$output_dir/$base_filename/index.html"
+
     echo "$formatted_post" > "$output_file"
     echo "Converted $file to $output_file"
 done
