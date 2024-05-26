@@ -81,9 +81,11 @@ for file in "$input_dir"/*.md; do
     date_paragraph="<p>$formatted_date</p>"
     html_content="$post_header_content$date_paragraph$generated_html_content"
 
+
     # Prepare and save the final post content
     head_template="${post_head_content//\{title\}/$head_title}"
     head_template="${head_template//\{description\}/$head_description}"
+    head_template="${head_template//\{image_link\}/\/$base_filename/preview.png}"
     head_replaced="${template_content/\{head\}/$head_template}"
     final_content="${head_replaced/\{content\}/$html_content}"
     formatted_post=$(echo "$final_content" | prettier --parser html)
@@ -92,7 +94,8 @@ for file in "$input_dir"/*.md; do
     # Set the output filename with the .html extension
     output_file="$output_dir/$base_filename/index.html"
 
-    ./scripts/image_generator "$output_dir/$base_filename/preview.png" "Grant's garden" "$formatted_date" "$head_title" "$head_description" "$line_2" "$line_3"
+    image_location="$output_dir/$base_filename/preview.png"
+    ./scripts/image_generator "$image_location" "Grant's garden" "$formatted_date" "$head_title" "$head_description" "$line_2" "$line_3"
 
     echo "$formatted_post" > "$output_file"
     echo "Converted $file to $output_file"
