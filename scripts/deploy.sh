@@ -6,7 +6,6 @@ set -e
 # Directory containing the files to deploy
 output_dir="output"
 
-echo "garden.grantcuster.com" > $output_dir/CNAME
 
 # Branch to deploy to
 deploy_branch="gh-pages"
@@ -26,6 +25,8 @@ trap "rm -rf $tmp_dir" EXIT
 
 # Copy the contents of the output directory to the temporary directory
 cp -r $output_dir/* $tmp_dir
+
+echo "garden.grantcuster.com" > $tmp_dir/CNAME
 
 # Check out the gh-pages branch, creating it if it doesn't exist
 if git show-ref --verify --quiet refs/heads/$deploy_branch; then
