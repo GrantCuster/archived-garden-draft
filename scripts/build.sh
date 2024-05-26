@@ -95,7 +95,7 @@ for file in "$input_dir"/*.md; do
     output_file="$output_dir/$base_filename/index.html"
 
     image_location="$output_dir/$base_filename/preview.png"
-    ./scripts/image_generator "$image_location" "Grant's garden" "$formatted_date" "$head_title" "$head_description" "$line_2" "$line_3"
+    ./scripts/image_generator "$image_location" "Grant's garden" "$formatted_date" "$head_title" "$head_description" "$line_2" "$line_3" "..."
 
     echo "$formatted_post" > "$output_file"
     echo "Converted $file to $output_file"
