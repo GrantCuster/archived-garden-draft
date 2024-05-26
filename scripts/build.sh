@@ -72,14 +72,18 @@ for file in "$input_dir"/*.md; do
     head_title=$(head -n 1 "$file" | sed 's/^# //')
     head_description=$(head -n 3 "$file" | tail -n 1)
 
-   # Convert the markdown file to HTML using pandoc
+    # TODO clean up
+    line_2=$(head -n 4 "$file" | tail -n 1)
+    line_3=$(head -n 5 "$file" | tail -n 1)
+
+    # Convert the markdown file to HTML using pandoc
     generated_html_content=$(pandoc "$file" --from=markdown-smart)
     date_paragraph="<p>$formatted_date</p>"
     html_content="$post_header_content$date_paragraph$generated_html_content"
 
     # Prepare and save the final post content
-    head_template="${post_head_content/\{title\}/$head_title}"
-    head_template="${head_template/\{description\}/$head_description}"
+    head_template="${post_head_content//\{title\}/$head_title}"
+    head_template="${head_template//\{description\}/$head_description}"
     head_replaced="${template_content/\{head\}/$head_template}"
     final_content="${head_replaced/\{content\}/$html_content}"
     formatted_post=$(echo "$final_content" | prettier --parser html)
@@ -87,6 +91,8 @@ for file in "$input_dir"/*.md; do
     mkdir -p "$output_dir/$base_filename"
     # Set the output filename with the .html extension
     output_file="$output_dir/$base_filename/index.html"
+
+    ./scripts/image_generator "$output_dir/$base_filename/preview.png" "Grant's garden" "$formatted_date" "$head_title" "$head_description" "$line_2" "$line_3"
 
     echo "$formatted_post" > "$output_file"
     echo "Converted $file to $output_file"
