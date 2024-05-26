@@ -7,7 +7,7 @@ unslugify() {
 
 # Set the directories
 src_dir="src"
-input_dir="posts"
+input_dir="content/posts"
 output_dir="output"
 template_file="wrapper.html"
 css_file="index.css"
@@ -31,9 +31,9 @@ template_content=$(<"$src_dir/$template_file")
 link_content=""
 
 # Loop through each markdown file in the input directory
-for file in "$src_dir/$input_dir"/*.md; do
+for file in $(ls "$input_dir"/*.md | sort -r); do
     # Skip if no markdown files are found
-    [ "$file" = "$src_dir/$input_dir/*.md" ] && echo "No markdown files found in $input_dir." && exit 1
+    [ "$file" = "$input_dir/*.md" ] && echo "No markdown files found in $input_dir." && exit 1
 
     # Get the base filename without the extension
     base_filename=$(basename "$file" .md)
@@ -60,9 +60,9 @@ post_head_content=$(<"$src_dir/post_head.html")
 post_header_content=$(<"$src_dir/post_header.html")
 
 # Loop through each markdown file in the input directory to process posts
-for file in "$src_dir/$input_dir"/*.md; do
+for file in "$input_dir"/*.md; do
     # Skip if no markdown files are found
-    [ "$file" = "$src_dir/$input_dir/*.md" ] && echo "No markdown files found in $input_dir." && exit 1
+    [ "$file" = "$input_dir/*.md" ] && echo "No markdown files found in $input_dir." && exit 1
 
     # Get the base filename without the extension
     base_filename=$(basename "$file" .md)

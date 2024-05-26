@@ -1,3 +1,4 @@
-Switch posts into a content folder, adjust scripts to match
-Sort posts reverse chron
 Better timestamps on post pages
+
+x Switch posts into a content folder, adjust scripts to match
+x Sort posts reverse chron

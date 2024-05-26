@@ -8,7 +8,7 @@ slugify() {
 # Get the current date and time in the specified format
 current_datetime=$(TZ=America/New_York date +"%Y-%m-%d-%H-%M-%S")
 
-posts_dir="src/posts"
+posts_dir="content/posts"
 
 # Prompt the user to enter the name
 read -p "Enter the name of the post: " name
