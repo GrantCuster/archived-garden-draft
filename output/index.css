@@ -41,6 +41,6 @@ html, body {
   height: 0.5lh;
 }
 
-.green {
+.green, a.green {
   color: var(--green);
 }
