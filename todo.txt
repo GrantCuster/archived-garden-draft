@@ -1,3 +1,5 @@
+Generate image and og tags for index too
+
 Better timestamps on post pages
 
 x Switch posts into a content folder, adjust scripts to match
