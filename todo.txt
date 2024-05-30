@@ -2,5 +2,14 @@ Generate image and og tags for index too
 
 Better timestamps on post pages
 
+Social posts
+  Tweet paramater composer
+  /social page
+
+Image strategy
+  Do I make a web app? File input and get back markdown link?
+  Also resize it to normal size with a canvas I think.
+  Serving it, it should just be an AWS link I think.
+
 x Switch posts into a content folder, adjust scripts to match
 x Sort posts reverse chron

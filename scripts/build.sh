@@ -43,7 +43,7 @@ for file in $(ls "$input_dir"/*.md | sort -r); do
     formatted_date=$(echo "$date_part" | sed 's/-/ /g' | awk '{print $1 "-" $2 "-" $3}')
     unslugified_title=$(unslugify "$title_part")
 
-    # Add a list item to the index content
+
     link_content+="<div><a href=\"$base_filename/\">$formatted_date - $unslugified_title</a></div>"
 done
 
@@ -81,7 +81,6 @@ for file in "$input_dir"/*.md; do
     date_paragraph="<p>$formatted_date</p>"
     html_content="$post_header_content$date_paragraph$generated_html_content"
 
-
     # Prepare and save the final post content
     head_template="${post_head_content//\{title\}/$head_title}"
     head_template="${head_template//\{description\}/$head_description}"
@@ -96,6 +95,8 @@ for file in "$input_dir"/*.md; do
 
     image_location="$output_dir/$base_filename/preview.png"
     ./scripts/image_generator "$image_location" "Grant's garden" "$formatted_date" "$head_title" "$head_description" "$line_2" "$line_3" "..."
+
+    output_file="$output_dir/$base_filename/social.html"
 
     echo "$formatted_post" > "$output_file"
     echo "Converted $file to $output_file"
