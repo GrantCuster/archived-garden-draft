@@ -44,3 +44,7 @@ html, body {
 .green, a.green {
   color: var(--green);
 }
+
+img {
+  max-width: 100%;
+}
