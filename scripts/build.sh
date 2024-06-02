@@ -84,7 +84,7 @@ for file in "$input_dir"/*.md; do
     # Prepare and save the final post content
     head_template="${post_head_content//\{title\}/$head_title}"
     head_template="${head_template//\{description\}/$head_description}"
-    head_template="${head_template//\{image_link\}/\/https://garden.grantcuster.com/$base_filename/preview.png}"
+    head_template="${head_template//\{image_link\}/\https://garden.grantcuster.com/$base_filename/preview.png}"
     head_replaced="${template_content/\{head\}/$head_template}"
     final_content="${head_replaced/\{content\}/$html_content}"
     formatted_post=$(echo "$final_content" | prettier --parser html)
